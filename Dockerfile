@@ -2,7 +2,8 @@ FROM thomasredstone/base
 # Install php-fpm
 RUN apt-get update -qq && apt-get -y upgrade
 RUN apt-get -y -qq install php5-fpm php5-mysql
-RUN apt-get -y -qq install curl libcurl3 libcurl3-dev php5-curl php5-mcrypt php5-gd
+RUN apt-get -y -qq install curl libcurl3 libcurl3-dev php5-curl php5-mcrypt php5-gd libreadline6 libreadline6-dev
+RUN php5enmod mcrypt
 RUN usermod -u 1000 www-data
 # Adding the configuration files
 ADD conf/www.conf /etc/php5/fpm/pool.d/www.conf
